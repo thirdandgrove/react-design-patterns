@@ -15,7 +15,10 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      updateItems([{ name: 'one', id: 0 }, { name: 'two', id: 1 }]);
+      updateItems([
+        { name: 'one', id: '1873312' },
+        { name: 'two', id: '1231234' }
+      ]);
       updateLoading(false);
     }, 1500);
   }, []);
