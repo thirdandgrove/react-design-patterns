@@ -16,6 +16,7 @@ class App extends Component {
       });
     });
   }
+
   removeItem = ({ id }) =>
     this.setState({ items: this.state.items.filter(item => item.id !== id) });
 

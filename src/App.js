@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App" style={{ padding: '3rem' }}>
-      <Title title="Do things" />
+      <Title title={`Things to do: ${items.length}`} />
       <ItemInput addItem={addItem} />
       {loading ? (
         <h3>...loading</h3>
