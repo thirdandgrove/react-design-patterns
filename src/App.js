@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Title from './components/Title';
+import ItemList from './components/ItemList';
+import ItemInput from './components/ItemInput';
 
 function App() {
+  const initialState = [{ name: 'one', id: 0 }, { name: 'two', id: 1 }];
+  const [items, updateItems] = useState(initialState);
+
+  const removeItem = ({ id }) =>
+    updateItems(items.filter(item => item.id !== id));
+
+  const addItem = item =>
+    updateItems([...items, { name: item, id: items.length }]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title title="Do things" />
+      <ItemInput addItem={addItem} />
+      <ItemList items={items} removeItem={removeItem} />
     </div>
   );
 }
