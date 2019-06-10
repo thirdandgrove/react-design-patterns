@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import fakeFetch from './util/fakeFetch';
+
 import Title from './components/Title';
 import ItemList from './components/ItemList';
 import ItemInput from './components/ItemInput';
@@ -7,12 +9,12 @@ class App extends Component {
   state = { items: [], loading: true };
 
   componentDidMount() {
-    setTimeout(() => {
+    fakeFetch().then(res => {
       this.setState({
-        items: [{ name: 'one', id: '1873312' }, { name: 'two', id: '1231234' }],
+        items: res.data,
         loading: false
       });
-    }, 1500);
+    });
   }
   removeItem = ({ id }) =>
     this.setState({ items: this.state.items.filter(item => item.id !== id) });

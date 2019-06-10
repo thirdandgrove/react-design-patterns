@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import fakeFetch from './util/fakeFetch';
+
 import Title from './components/Title';
 import ItemList from './components/ItemList';
 import ItemInput from './components/ItemInput';
@@ -14,13 +16,10 @@ function App() {
     updateItems([...items, { name: item, id: Date.now() }]);
 
   useEffect(() => {
-    setTimeout(() => {
-      updateItems([
-        { name: 'one', id: '1873312' },
-        { name: 'two', id: '1231234' }
-      ]);
+    fakeFetch().then(res => {
+      updateItems(res.data);
       updateLoading(false);
-    }, 1500);
+    });
   }, []);
 
   return (
