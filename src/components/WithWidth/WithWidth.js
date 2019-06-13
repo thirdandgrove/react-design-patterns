@@ -1,5 +1,3 @@
-import React from 'react';
-
 import useWindow from '../../hooks/useWindow';
 
 export default ({ render }) => {
